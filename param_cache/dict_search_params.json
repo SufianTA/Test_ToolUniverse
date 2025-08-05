@@ -1,0 +1,11 @@
+{
+  "query": "Ibuprofen",
+  "search_fields": [
+    "Trade Name",
+    "Generic/Proper Name(s)",
+    "Active Ingredient(s)"
+  ],
+  "case_sensitive": false,
+  "exact_match": true,
+  "limit": 100
+}

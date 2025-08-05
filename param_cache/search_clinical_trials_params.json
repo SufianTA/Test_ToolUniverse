@@ -1,0 +1,7 @@
+{
+  "condition": "(heart OR cardiac) AND failure",
+  "intervention": "transplant",
+  "query.term": "AREA[LastUpdatePostDate]RANGE[2022-01-01,MAX]",
+  "pageSize": 20,
+  "pageToken": "CAoQ8JMBGAIiACI="
+}

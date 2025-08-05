@@ -1,0 +1,10 @@
+{
+  "query": "Paracetamol",
+  "search_fields": [
+    "name",
+    "synonyms"
+  ],
+  "case_sensitive": false,
+  "exact_match": false,
+  "limit": 500
+}

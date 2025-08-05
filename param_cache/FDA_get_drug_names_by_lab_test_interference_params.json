@@ -1,0 +1,6 @@
+{
+  "lab_test_interference": "glucose test",
+  "indication": "diabetes",
+  "limit": 10,
+  "skip": 5
+}

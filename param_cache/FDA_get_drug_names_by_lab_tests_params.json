@@ -1,0 +1,6 @@
+{
+  "lab_test_info": "Complete Blood Count Test",
+  "indication": "Anemia",
+  "limit": 10,
+  "skip": 5
+}

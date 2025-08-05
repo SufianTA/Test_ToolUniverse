@@ -1,0 +1,6 @@
+{
+  "field": "Common name",
+  "condition": "contains",
+  "value": "acetaminophen",
+  "limit": 50
+}

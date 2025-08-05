@@ -1,0 +1,9 @@
+{
+  "description": "I need a tool that can help with photo editing, especially with removing background and filters application.",
+  "limit": 5,
+  "picked_tool_names": [
+    "Photoshop",
+    "Lightroom"
+  ],
+  "return_call_result": true
+}

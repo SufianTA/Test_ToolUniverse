@@ -1,0 +1,6 @@
+{
+  "accessory_name": "Insulin pump",
+  "indication": "Diabetes",
+  "limit": 10,
+  "skip": 5
+}

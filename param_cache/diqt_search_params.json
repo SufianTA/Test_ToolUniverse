@@ -1,0 +1,10 @@
+{
+  "query": "Aspirin",
+  "search_fields": [
+    "Generic/Proper Name(s)",
+    "DrugBank ID"
+  ],
+  "case_sensitive": false,
+  "exact_match": true,
+  "limit": 10
+}

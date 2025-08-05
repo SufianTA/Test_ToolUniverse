@@ -1,0 +1,6 @@
+{
+  "population_use": "elderly",
+  "indication": "hypertension",
+  "limit": 10,
+  "skip": 5
+}

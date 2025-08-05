@@ -1,0 +1,4 @@
+{
+  "original_description": "DescriptionAnalyzer is an advanced tool that analyzes product descriptions, extracting key features and generating a summary. It uses AI to understand context and relevance, ensuring the summary is accurate and concise.",
+  "test_results": "{\"tests\": [{\"input\": \"This is a high-end gaming laptop with a 15.6-inch display and an Intel Core i7 processor. It has 16GB RAM and a 1TB SSD. It features a powerful NVIDIA GeForce RTX 3060 graphics card.\", \"output\": \"High-end gaming laptop, 15.6-inch display, Intel Core i7, 16GB RAM, 1TB SSD, NVIDIA GeForce RTX 3060 graphics card.\"}, {\"input\": \"This is a compact digital camera with a 20.1 megapixel sensor. It has a 25x optical zoom and features built-in Wi-Fi for easy photo sharing.\", \"output\": \"Compact digital camera, 20.1 megapixel sensor, 25x optical zoom, built-in Wi-Fi.\"}]}"
+}

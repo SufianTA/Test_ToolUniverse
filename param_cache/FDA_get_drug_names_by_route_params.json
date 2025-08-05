@@ -1,0 +1,6 @@
+{
+  "route": "oral",
+  "indication": "hypertension",
+  "limit": 10,
+  "skip": 5
+}

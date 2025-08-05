@@ -1,0 +1,6 @@
+{
+  "controlled_substance_schedule": "Schedule II",
+  "indication": "Pain Management",
+  "limit": 10,
+  "skip": 5
+}

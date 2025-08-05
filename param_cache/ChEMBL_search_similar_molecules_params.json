@@ -1,0 +1,5 @@
+{
+  "query": "Aspirin",
+  "similarity_threshold": 90,
+  "max_results": 30
+}

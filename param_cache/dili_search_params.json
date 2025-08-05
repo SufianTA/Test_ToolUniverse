@@ -1,0 +1,9 @@
+{
+  "query": "Ibuprofen",
+  "search_fields": [
+    "Compound Name"
+  ],
+  "case_sensitive": false,
+  "exact_match": true,
+  "limit": 500
+}

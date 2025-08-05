@@ -1,0 +1,15 @@
+{
+  "operation": "call_tool",
+  "tool_name": "mcp_data_extractor",
+  "tool_arguments": {
+    "source": "database",
+    "target": "data_warehouse",
+    "filter": {
+      "date_range": {
+        "start": "2022-01-01",
+        "end": "2022-01-31"
+      },
+      "product_category": "electronics"
+    }
+  }
+}

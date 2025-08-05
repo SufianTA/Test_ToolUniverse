@@ -1,0 +1,10 @@
+{
+  "query": "Ibuprofen",
+  "search_fields": [
+    "Common name",
+    "Synonyms"
+  ],
+  "case_sensitive": false,
+  "exact_match": true,
+  "limit": 20
+}

@@ -1,0 +1,16 @@
+{
+  "gene_list": [
+    "BRCA1",
+    "TP53",
+    "EGFR",
+    "TNF",
+    "APOE"
+  ],
+  "libs": [
+    "KEGG_2019_Human",
+    "Human_Phenotype_Ontology",
+    "Reactome_Pathways_2024",
+    "WikiPathways_2024_Human",
+    "GO_Biological_Process_2023"
+  ]
+}

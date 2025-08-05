@@ -1,0 +1,16 @@
+{
+  "tool_config": {
+    "_optimization_feedback": {
+      "previous_execution_time": 2.5,
+      "average_execution_time": 2.7,
+      "worst_case_execution_time": 3.2
+    },
+    "_iteration": 5,
+    "tool_name": "MyCustomTool",
+    "tool_version": "1.0.1",
+    "parameters": {
+      "param1": "value1",
+      "param2": "value2"
+    }
+  }
+}

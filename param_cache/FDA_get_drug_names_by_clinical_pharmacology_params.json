@@ -1,0 +1,6 @@
+{
+  "clinical_pharmacology": "anticoagulant",
+  "indication": "prevention of stroke",
+  "limit": 10,
+  "skip": 5
+}

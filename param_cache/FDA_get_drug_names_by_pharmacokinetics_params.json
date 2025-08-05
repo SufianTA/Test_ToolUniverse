@@ -1,0 +1,6 @@
+{
+  "pharmacokinetics_info": "Metabolized by CYP3A4",
+  "indication": "hypertension",
+  "limit": 5,
+  "skip": 2
+}

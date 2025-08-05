@@ -1,0 +1,6 @@
+{
+  "dosage_forms_and_strengths": "Tablet: 5 mg, 10 mg, 15 mg, 20 mg",
+  "indication": "Treatment for hypertension",
+  "limit": 10,
+  "skip": 5
+}

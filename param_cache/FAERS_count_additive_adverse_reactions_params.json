@@ -1,0 +1,11 @@
+{
+  "medicinalproducts": [
+    "Paracetamol",
+    "Ibuprofen"
+  ],
+  "patientsex": "Male",
+  "patientagegroup": "Adult",
+  "occurcountry": "US",
+  "serious": "Yes",
+  "seriousnessdeath": "No"
+}

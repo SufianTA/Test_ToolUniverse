@@ -1,0 +1,5 @@
+{
+  "tool_description": "This is a powerful image editing tool that allows you to adjust and enhance your photos with a wide range of filters and effects.",
+  "parameter_descriptions": "{\"brightness\": \"Adjusts the brightness of the photo.\", \"contrast\": \"Modifies the contrast of the image.\", \"saturation\": \"Controls the intensity of the colors.\", \"filters\": \"Applies different visual effects to the photo.\"}",
+  "test_results": "{\"test1\": {\"passed\": true, \"feedback\": \"Brightness functionality works as expected.\"}, \"test2\": {\"passed\": false, \"feedback\": \"Contrast adjustment is not functioning correctly.\"}, \"test3\": {\"passed\": true, \"feedback\": \"Saturation and filters are working properly.\"}}"
+}

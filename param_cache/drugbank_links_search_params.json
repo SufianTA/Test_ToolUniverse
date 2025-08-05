@@ -1,0 +1,11 @@
+{
+  "query": "DB00002",
+  "search_fields": [
+    "DrugBank ID",
+    "Name",
+    "Drug Type"
+  ],
+  "case_sensitive": false,
+  "exact_match": true,
+  "limit": 100
+}

@@ -1,0 +1,9 @@
+{
+  "medicinalproducts": [
+    "Paracetamol",
+    "Ibuprofen"
+  ],
+  "patientsex": "Female",
+  "patientagegroup": "Adult",
+  "serious": "Yes"
+}

@@ -1,0 +1,6 @@
+{
+  "alarm_type": "recall",
+  "indication": "cardiovascular disease",
+  "limit": 10,
+  "skip": 5
+}

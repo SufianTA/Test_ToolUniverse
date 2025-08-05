@@ -1,0 +1,10 @@
+{
+  "drug_name": "Ibuprofen",
+  "ndc": "54868-4241",
+  "rxcui": "860975",
+  "setid": "b2fe3ec1-bc48-4c68-9342-9a1711f2108b",
+  "published_date_gte": "2018-01-01",
+  "published_date_eq": "2020-12-31",
+  "pagesize": 50,
+  "page": 2
+}

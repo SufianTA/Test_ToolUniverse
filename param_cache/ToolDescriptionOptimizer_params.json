@@ -1,0 +1,27 @@
+{
+  "tool_config": {
+    "name": "ImageResizer",
+    "description": "A tool to resize images",
+    "parameters": [
+      {
+        "name": "image_path",
+        "type": "string",
+        "description": "The path of the image to resize"
+      },
+      {
+        "name": "width",
+        "type": "integer",
+        "description": "The new width of the image"
+      },
+      {
+        "name": "height",
+        "type": "integer",
+        "description": "The new height of the image"
+      }
+    ]
+  },
+  "save_to_file": true,
+  "output_file": "ImageResizer_optimized_description.txt",
+  "max_iterations": 5,
+  "satisfaction_threshold": 9.5
+}
