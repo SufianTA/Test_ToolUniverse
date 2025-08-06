@@ -145,7 +145,7 @@ def run_all_tool_tests_streaming():
             yield {"name": name, "error": f"Failed to parse parameter schema: {e}"}
             continue
 
-        gpt_output = generate_sample_arguments(name, param_schema["properties"])
+        gpt_output = load_cached_params(name)
         if not gpt_output:
             yield {"name": name, "error": "Failed to generate sample input"}
             continue
@@ -176,4 +176,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
