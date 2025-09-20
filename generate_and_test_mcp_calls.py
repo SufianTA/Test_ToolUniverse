@@ -12,7 +12,7 @@ MCP_ENDPOINT = "https://tooluniversemcpserver.onrender.com/mcp/"
 OPENAI_KEY = ''
 CACHE_DIR = Path("param_cache")
 CACHE_DIR.mkdir(exist_ok=True)
-
+TOOLS_JSON_PATH = "tools_restored.json" 
 client = OpenAI(api_key=OPENAI_KEY)
 
 # === CACHE FUNCTIONS FOR PARAMETERS ONLY ===
@@ -33,15 +33,49 @@ def save_cached_params(tool_name: str, param_data: dict):
         json.dump(param_data, f, indent=2)
 
 # === HELPER FUNCTIONS ===
-def load_tools_from_excel():
-    df = pd.read_excel(EXCEL_PATH)
-    tools = []
-    for _, row in df.iterrows():
-        tool_name = str(row.get("name", "")).strip()
-        if not tool_name:
+
+
+def _is_excluded_category(cat):
+    """
+    Return True if the tool category is excluded (LangchainTool or PubChem).
+    Works for string or list categories.
+    """
+    excluded = {"langchaintool", "pubchem"}  # add more here if needed
+
+    if not cat:
+        return False
+
+    if isinstance(cat, str):
+        return cat.strip().lower() in excluded
+
+    if isinstance(cat, (list, tuple)):
+        return any(
+            isinstance(x, str) and x.strip().lower() in excluded
+            for x in cat
+        )
+
+    return False
+
+
+def load_tools_from_json(path: str = TOOLS_JSON_PATH):
+    with open(path, "r", encoding="utf-8") as f:
+        tools = json.load(f)
+
+    api_tools = []
+    for t in tools:
+        tool_type = (t.get("toolType") or "").strip().lower()
+        if tool_type != "api":
             continue
-        tools.append(row.to_dict())
-    return tools
+        if _is_excluded_category(t.get("category")):
+            continue 
+
+        t["_properties"] = (t.get("inputSchema") or {}).get("properties", {})  # dict or {}
+        t["_example"]    = t.get("exampleInput") or {}                          # dict or {}
+        api_tools.append(t)
+
+    return api_tools
+
+
 
 def generate_sample_arguments(tool_name, param_properties):
     cached = load_cached_params(tool_name)
@@ -160,40 +194,43 @@ def load_tools_and_generate_calls():
     return run_all_tool_tests_streaming()
 
 def run_all_tool_tests_streaming():
-    all_tools = load_tools_from_excel()
+    all_tools = load_tools_from_json()
 
     for tool in all_tools:
         name = tool.get("name")
         description = tool.get("description", "")
-        tool_type = tool.get("type", "")
-        param_json = tool.get("parameter")
-
-        try:
-            param_schema = json.loads(param_json) if isinstance(param_json, str) else param_json
-            if not isinstance(param_schema, dict) or "properties" not in param_schema:
-                raise ValueError("Missing 'properties' field")
-        except Exception as e:
-            yield {"name": name, "error": f"Failed to parse parameter schema: {e}"}
+        tool_type = tool.get("toolType", "")
+        properties = tool.get("_properties", {})          # from loader normalization
+        example    = tool.get("_example", {})             # from loader normalization
+    
+        # Safety: ensure we have a dict of properties
+        if not isinstance(properties, dict):
+            yield {"name": name, "error": "Invalid parameter properties in JSON"}
             continue
-
-        gpt_output = generate_sample_arguments(name, param_schema["properties"])
-        if not gpt_output:
-            yield {"name": name, "error": "Failed to generate sample input"}
-            continue
-
+    
+        # Prefer the JSON's exampleInput; fall back to the GPT-generated sample if missing.
+        if isinstance(example, dict) and len(example) > 0:
+            gpt_output = example
+        else:
+            gpt_output = generate_sample_arguments(name, properties)
+            if not gpt_output:
+                yield {"name": name, "error": "Failed to generate sample input"}
+                continue
+    
         mcp_response = call_mcp(name, gpt_output)
-        output = mcp_response  # already formatted
+        output = mcp_response
         status = classify_response_status(output)
-
+    
         yield {
             "name": name,
             "description": description,
             "type": tool_type,
-            "parameters": param_schema["properties"],
+            "parameters": properties,
             "input": gpt_output,
             "output": output,
             "status": status
         }
+    
 
 # Optional CLI entry
 def main():
