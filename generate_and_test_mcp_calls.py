@@ -3,7 +3,6 @@ import json
 import pandas as pd
 import requests
 from pathlib import Path
-from openai import OpenAI
 from typing import Union
 
 # === CONFIGURATION ===
@@ -12,8 +11,9 @@ MCP_ENDPOINT = "https://tooluniversemcpserver.onrender.com/mcp/"
 OPENAI_KEY = ''
 CACHE_DIR = Path("param_cache")
 CACHE_DIR.mkdir(exist_ok=True)
+
 TOOLS_JSON_PATH = "tools_restored.json" 
-client = OpenAI(api_key=OPENAI_KEY)
+
 
 # === CACHE FUNCTIONS FOR PARAMETERS ONLY ===
 def get_param_cache_path(tool_name: str) -> Path:
@@ -76,36 +76,6 @@ def load_tools_from_json(path: str = TOOLS_JSON_PATH):
     return api_tools
 
 
-
-def generate_sample_arguments(tool_name, param_properties):
-    cached = load_cached_params(tool_name)
-    if cached:
-        return cached
-
-    system_prompt = f"""You are a helpful assistant generating example input for a tool.
-
-Tool name: {tool_name}
-Here are its parameter fields and their descriptions as JSON:
-{json.dumps(param_properties, indent=2)}
-
-Please respond ONLY with a valid JSON dictionary containing realistic values for each parameter.
-Do NOT explain anything. Just return the JSON.
-"""
-
-    try:
-        response = client.chat.completions.create(
-            model="gpt-4",
-            messages=[{"role": "system", "content": system_prompt}],
-            temperature=0.7,
-            max_tokens=500
-        )
-        output = response.choices[0].message.content.strip()
-        parsed_output = json.loads(output)
-        save_cached_params(tool_name, parsed_output)
-        return parsed_output
-    except Exception as e:
-        print(f"❌ GPT error for {tool_name}:", e)
-        return {}
 
 def call_mcp(tool_name, arguments):
     payload = {
@@ -231,7 +201,8 @@ def run_all_tool_tests_streaming():
             "status": status
         }
     
-
+        
+    
 # Optional CLI entry
 def main():
     for result in run_all_tool_tests_streaming():
@@ -244,3 +215,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+

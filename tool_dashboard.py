@@ -1,3 +1,13 @@
+import os
+import subprocess
+import sys
+
+# Try to import openpyxl; install it if missing
+try:
+    import openpyxl
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "openpyxl"])
+
 import streamlit as st
 from generate_and_test_mcp_calls import run_all_tool_tests_streaming
 
@@ -71,3 +81,4 @@ elif "results" in st.session_state:
             st.json(result.get("input", {}))
             st.markdown("**📄 Raw MCP Output:**")
             st.code(result.get("output", ""), language="json")
+
